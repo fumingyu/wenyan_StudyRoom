@@ -1,0 +1,83 @@
+<!--pages/fill_form/fill_form.wxml-->
+
+<!-- 当前座位 -->
+<view class="title">
+  <text id="table_title" decode='{{true}}'>当前座位号: &nbsp;&nbsp;</text>
+  <view id="table_id">{{table_id}}</view>
+</view>
+<!-- 座位表单 -->
+<view class="form-container">
+  <!-- 表单部分，包括 1.到店日期；2.天或月；3租用时长；4.费用；5.预计到期 -->
+  <form bindsubmit="submitForm">
+    <!-- 1.到店日期部分 开始 -->
+    <view class="form-item">
+      <view class="form-item-title">到店日期</view>
+      <view class="picker-arrived">
+        <picker mode="date" value="{{arrived_date}}" start="2022-01-10" end="2023-01-10" bindchange="bindArriveChange">
+          <view class="time-select">{{arrived_date}}</view>
+        </picker>
+      </view>
+    </view>
+    <!-- 1.到店日期部分 结束 -->
+    <!-- 是否到考研 开始-->
+    <view class="form-item">
+      <view class="form-item-title">到考研</view>
+      <view class="judge-to-end">
+        <switch id="kaoyan" checked="{{kaoyan}}" bindchange="switchChange"/>
+      </view>
+    </view>
+    <!-- 是否到考研 结束-->
+    <!-- 2.天或月部分 开始 -->
+    <view class="form-item">
+      <view class="form-item-title">天或月</view>
+        <view class="day-or-month {{kaoyan_style}}">
+        <radio-group class="time-select" name="day_or_month" bindchange="checkDay" id="day_or_month">
+          <label><radio value='天' checked="{{radio_day}}" disabled="{{kaoyan}}"/>天</label>
+          <label><radio value='个月' checked="{{radio_month}}" disabled="{{kaoyan}}"/>月</label>
+        </radio-group>
+      </view>
+    </view>
+    <!-- 2.天或月部分 结束 -->
+    <!-- 3.租用时长部分 开始 -->
+    <view class="form-item">
+      <view class="form-item-title">租用时长</view>
+      <view class="picker-duration  {{kaoyan_style}}">
+        <view disabled="{{select_time}}">请选择天或月</view>
+        <picker bindchange="bindDurationChange" value="{{index}}" range="{{day_array}}" disabled="{{kaoyan}}">
+          <view class="time-select" id="duration">{{kaoyan?'到考研':day_array[day_index]}}</view>
+        </picker>
+      </view>
+    </view>
+    <!-- 3.租用时长部分 结束 -->
+    <!-- 4.费用部分 开始 -->
+    <view class="form-item">
+      <view class="form-item-title">费用</view>
+        <view class="input-box" id="fee">
+        <input placeholder="请输入费用" value="{{fee}}" type="number" placeholder-class="form-input" name='fee'/>
+        <view class="rmb">元</view>
+      </view>
+    </view>
+    <!-- 4.费用部分 结束 -->
+    <!-- 支付方式 开始 -->
+    <view class="form-item">
+      <view class="form-item-title">支付方式</view>
+      <view class="picker-duration ">
+        <picker bindchange="bindFeeSelect" value="{{index}}" range="{{fee_array}}">
+          <view class="fee-select" >{{fee_array[fee_index]}}</view>
+        </picker>
+      </view>
+    </view>
+    <!-- 支付方式 结束 -->
+    <!-- 5.到期日期部分 开始 -->
+    <view class="form-item">
+      <view class="form-item-title">到期日期</view>
+      <view class="input-box {{kaoyan_style}}" id="ternimal">
+      <input disabled value="{{kaoyan? '到考研':termination}}"  placeholder-class="form-input" name='end_time'/>
+      </view>
+    </view>
+    <!-- 5.到期日期部分 结束 -->
+    <view id="explain">* 每个月按31天计算</view>
+    <button type="primary" form-type="submit" bindtap="saveData" style='margin-top: 45rpx'>确定</button>
+  </form>
+</view>
+

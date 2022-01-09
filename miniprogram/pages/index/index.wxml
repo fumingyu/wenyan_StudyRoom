@@ -1,0 +1,39 @@
+<view class="modify-form">
+<form bindsubmit='getForm'>
+    <view class="label-list">
+        <view class="label">姓名</view>
+        <view class="input-box">
+        <input placeholder="请输入您的姓名"  placeholder-class="place" name="name" value="{{name}}"/>
+        </view>
+    </view>
+    <view class="label-list">
+        <view class="label">性别</view>
+        <radio-group class="radio-group" bindchange="radioChange">
+            <label class="radio" wx:for="{{sex}}" wx:key="index">
+                <radio value="{{item.id}}" checked="{{sexId == item.id}}"/>{{item.name}}
+            </label>
+        </radio-group>
+    </view>
+    <view class="label-list">
+        <view class="label">E-mail</view>
+        <view class="input-box">
+        <input placeholder="请输入您的E-mail" value='{{Email}}' placeholder-class="place" name='Email'/>
+        </view>
+    </view>
+    <view class="label-list">
+        <view class="label">所在公司/学校</view>
+        <view class="input-box">
+        <input placeholder="请输入您的公司/学校" value="{{school}}"  placeholder-class="place" name='school'/>
+        </view>
+    </view>
+    <view class="label-list">
+        <view class="label">身份</view>
+        <picker bindchange="bindPickerChange" range="{{identity}}" value="{{index}}">
+        <view  class="picker-show">
+        {{identity[index]}}
+        </view>
+        </picker>
+    </view>
+    <button formType="submit" bindtap="saveData" class="submit">确定</button>
+</form>
+</view>
