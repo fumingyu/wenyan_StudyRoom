@@ -1,0 +1,84 @@
+/* 当前座位号 */
+.title {
+  margin-top: 10rpx;
+  padding-left: 25rpx;
+  display: flex;
+  height: 100rpx;
+  background-color: rgb(250, 238, 220);
+}
+#table_title { 
+  margin-top: 35rpx;
+  width: 320rpx;
+}
+#table_id {
+  margin-top: 15rpx;
+  margin-left: 20rpx;
+  font-size: 60rpx;
+  height: 50rpx;
+}
+
+/* 表单 */
+.form-container {
+  padding: 30rpx; 
+}
+/* 每行样式 */
+.form-item{
+  display: flex;
+  width: 100%;
+  height: 120rpx;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+}
+/* 左侧标题 */
+.form-item-title {
+    color: #333;
+    font-size: 36rpx;
+    font-weight: bold;
+}
+/* 右侧输入框 */
+.input-box{
+  display: flex;
+  margin-left: 50rpx;
+}
+.form-input, .time-select, #ternimal, .fee-select {
+  align-items: center;
+  font-size: 36rpx;
+  color: rgb(125, 126, 126);
+  vertical-align:middle;
+}
+/* 天或月 & 租用时长 */
+.picker-duration, .day-or-month, .picker-arrive{
+  margin-left: 50rpx;
+}
+#day_or_month {
+  margin-left: 35rpx;
+}
+/* 费用 */
+#fee {
+  margin-left: 120rpx;
+  height: 100rpx;
+  align-items: center;
+}
+.rmb {
+  position: relative;
+  margin-left: -20rpx;
+}
+/* 到考研switch */
+#kaoyan {
+  margin-left: 80rpx;
+}
+/* 到考研的输入框样式 */
+.kaoyan {
+  background-color: rgb(216, 216, 216);
+  width: 300rpx;
+  margin-left: 45rpx;
+}
+#explain {
+  padding-top: 20rpx;
+}
+
+/* 费用及到期日期内容 */
+.input-text {
+  height: 50rpx;
+  width: 240rpx;
+}

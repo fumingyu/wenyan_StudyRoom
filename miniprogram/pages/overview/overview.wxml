@@ -1,0 +1,297 @@
+<!--pages/overview/overview.wxml-->
+<view class="buttons">
+  <button bindtap="showHasExpire" plain="true" type="{{selected == 1? 'primary':'default'}}" size="mini">已经到期</button>
+  <button bindtap="showWillExpire" plain="true" type="{{selected == 2? 'primary':'default'}}" size="mini">即将到期</button>
+  <button bindtap="showAllRecord" plain="true" type="{{selected == 3? 'primary':'default'}}" size="mini">查看所有</button>
+</view> 
+
+<!--学院西路、健康路导航条-->
+<view class="navbar">
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="navbar" bindtap="navbarTap">{{item}}</text>
+</view> 
+
+<!-- 学院西路 -->
+<view hidden="{{currentTab!==0}}">
+  <view class="record_num">
+    <view>共</view>  
+    <view class="selected" style="font-size: 40rpx; color: gray;">
+      <block wx:if="{{selected==3}}">
+        {{table_all.length}}
+      </block>
+      <block wx:elif="{{selected==1}}">
+        {{has_expire_table.length}}
+      </block>
+      <block wx:elif="{{selected==2}}">
+        {{will_expire_table.length}}
+      </block>
+      <block wx:else>0</block>
+    </view> 
+    <view>条记录</view>  
+  </view>
+
+  <view class="record">
+    <view class="record-title">
+      <view class="title-item">座位</view>
+      <view class="title-item">续费</view>
+      <view class="title-item">详细</view>
+      <view class="title-item">删除</view>
+      <view class="title-item"><rich-text>  </rich-text></view>
+      <view class="title-item">到期日期</view>
+      <view class="title-item" id="fee">费用</view>
+      <view class="title-item"></view>
+    </view>
+
+    <!-- 已经到期 -->
+    <block wx:if="{{selected==1}}" wx:for="{{has_expire_table}}" wx:key="has_expire">
+      <view class="record-content" id="item-{{index}}" bindtap="onTap">
+        <view class="content-item" style="background-color:{{index==current_id? 'rgb(255, 106, 106);':''}}" bindlongpress="showManage">
+          <view>
+            <view>{{has_expire_table[index].symbol}}{{has_expire_table[index].table_id}}</view>
+          </view>
+          <view>
+            <button class="renew-button" type="primary" size="mini" bindtap="renewal" id="{{index}}">续</button>
+          </view>
+          <view>
+            <button class="info-button" type="default" size="mini" bindtap="info" id="{{index}}">详</button>
+          </view>
+          <view>
+            <button class="delete-button" type="warn"  size="mini" bindtap="delete" id="{{index}}">删</button>
+          </view>
+          <view>
+            <view>{{has_expire_table[index].terminal_date}}</view>
+          </view>
+          <view>
+            <view>{{has_expire_table[index].payment[0]}}{{has_expire_table[index].fee}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <!-- 即将到期 -->
+    <block wx:if="{{selected==2}}" wx:for="{{will_expire_table}}" wx:key="will_expire">
+      <view class="record-content" id="item-{{index}}" bindtap="onTap">
+        <view class="content-item" style="background-color:{{index==current_id? 'rgb(255, 250, 205);':''}}">
+          <view>
+            <view>{{will_expire_table[index].symbol}}{{will_expire_table[index].table_id}}</view>
+          </view>
+          <view>
+            <button class="renew-button" type="primary" size="mini" bindtap="renewal" id="{{index}}">续</button>
+          </view>
+          <view>
+            <button class="info-button" type="default" size="mini" bindtap="info" id="{{index}}">详</button>
+          </view>
+          <view>
+            <button class="delete-button" type="warn"  size="mini" bindtap="delete" id="{{index}}">删</button>
+          </view>
+          <view>
+            <view>{{will_expire_table[index].terminal_date}}</view>
+          </view>
+          <view>
+            <view>{{will_expire_table[index].payment[0]}}{{will_expire_table[index].fee}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <!-- 查看所有 -->
+    <block wx:if="{{selected==3}}" wx:for="{{table_all}}" wx:key="id">
+      <view class="record-content" id="item-{{index}}" bindtap="onTap">
+        <view class="content-item" style="background-color:{{index==current_id? 'rgb(127, 255, 212);':''}}">
+          <view>
+            <view>{{table_all[index].symbol}}{{table_all[index].table_id}}</view>
+          </view>
+          <view>
+            <button class="renew-button" type="primary" size="mini" bindtap="renewal" id="{{index}}">续</button>
+          </view>
+          <view>
+            <button class="info-button" type="default" size="mini" bindtap="info" id="{{index}}">详</button>
+          </view>
+          <view>
+            <button class="delete-button" type="warn"  size="mini" bindtap="delete" id="{{index}}">删</button>
+          </view>
+          <view>
+            <view>{{table_all[index].terminal_date}}</view>
+          </view>
+          <view>
+            <view>{{table_all[index].payment[0]}}{{table_all[index].fee}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+
+<!-- 健康路 -->
+<view hidden="{{currentTab!==1}}">
+  <view class="record_num">
+    <view>共</view>  
+    <view class="selected" style="font-size: 40rpx; color: gray;">
+      <block wx:if="{{selected==3}}">
+        {{table_all_2.length}}
+      </block>
+      <block wx:elif="{{selected==1}}">
+        {{has_expire_table_2.length}}
+      </block>
+      <block wx:elif="{{selected==2}}">
+        {{will_expire_table_2.length}}
+      </block>
+      <block wx:else>0</block>
+    </view> 
+    <view>条记录</view>  
+  </view>
+
+  <view class="record">
+    <view class="record-title">
+      <view class="title-item">座位</view>
+      <view class="title-item">续费</view>
+      <view class="title-item">详细</view>
+      <view class="title-item">删除</view>
+      <view class="title-item"><rich-text>  </rich-text></view>
+      <view class="title-item">到期日期</view>
+      <view class="title-item" id="fee">费用</view>
+      <view class="title-item"></view>
+    </view>
+    <!-- 查看所有 -->
+    <block wx:if="{{selected==3}}" wx:for="{{table_all_2}}" wx:key="id">
+      <view class="record-content" id="item-{{index}}" bindtap="onTap">
+        <view class="content-item" style="background-color:{{index==current_id? 'rgb(127, 255, 212);':''}}">
+          <view>
+            <view>{{table_all_2[index].symbol}}{{table_all_2[index].table_id}}</view>
+          </view>
+          <view>
+            <button class="renew-button" type="primary" size="mini" bindtap="renewal" id="{{index}}">续</button>
+          </view>
+          <view>
+            <button class="info-button" type="default" size="mini" bindtap="info" id="{{index}}">详</button>
+          </view>
+          <view>
+            <button class="delete-button" type="warn"  size="mini" bindtap="delete" id="{{index}}">删</button>
+          </view>
+          <view>
+            <view>{{table_all_2[index].terminal_date}}</view>
+          </view>
+          <view>
+            <view>{{table_all_2[index].payment[0]}}{{table_all_2[index].fee}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <!-- 已经到期 -->
+    <block wx:if="{{selected==1}}" wx:for="{{has_expire_table_2}}" wx:key="has_expire">
+      <view class="record-content" id="item-{{index}}" bindtap="onTap">
+        <view class="content-item" style="background-color:{{index==current_id? 'rgb(255, 106, 106);':''}}">
+          <view>
+            <view>{{has_expire_table_2[index].symbol}}{{has_expire_table_2[index].table_id}}</view>
+          </view>
+          <view>
+            <button class="renew-button" type="primary" size="mini" bindtap="renewal" id="{{index}}">续</button>
+          </view>
+          <view>
+            <button class="info-button" type="default" size="mini" bindtap="info" id="{{index}}">详</button>
+          </view>
+          <view>
+            <button class="delete-button" type="warn"  size="mini" bindtap="delete" id="{{index}}">删</button>
+          </view>
+          <view>
+            <view>{{has_expire_table_2[index].terminal_date}}</view>
+          </view>
+          <view>
+            <view>{{has_expire_table_2[index].payment[0]}}{{has_expire_table_2[index].fee}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <!-- 即将到期 -->
+    <block wx:if="{{selected==2}}" wx:for="{{will_expire_table_2}}" wx:key="will_expire">
+      <view class="record-content" id="item-{{index}}" bindtap="onTap">
+        <view class="content-item" style="background-color:{{index==current_id? 'rgb(255, 250, 205);':''}}">
+          <view>
+            <view>{{will_expire_table_2[index].symbol}}{{will_expire_table_2[index].table_id}}</view>
+          </view>
+          <view>
+            <button class="renew-button" type="primary" size="mini" bindtap="renewal" id="{{index}}">续</button>
+          </view>
+          <view>
+            <button class="info-button" type="default" size="mini" bindtap="info" id="{{index}}">详</button>
+          </view>
+          <view>
+            <button class="delete-button" type="warn"  size="mini" bindtap="delete" id="{{index}}">删</button>
+          </view>
+          <view>
+            <view>{{will_expire_table_2[index].terminal_date}}</view>
+          </view>
+          <view>
+            <view>{{will_expire_table_2[index].payment[0]}}{{will_expire_table_2[index].fee}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+
+<!-- 显示详细内容 -->
+<view wx:if="{{show_data_info}}">
+  <view class="mask"></view>
+  <view class="modalDlg">
+    <view class="info-id">
+      <view>当前座位号：</view>
+      <view class="current-table">{{data_info.symbol}}{{data_info.table_id}}</view>
+    </view>
+    <view class="info-body">
+      <view class="info-content">
+        <view>开始时间：</view>
+        <view class="current-table">{{data_info.arrive_date}}</view>
+      </view>
+      <view class="info-content">
+        <view>时长：</view>
+        <view class="current-table">{{data_info.duration_time}}</view>
+      </view>
+      <view class="info-content">
+        <view>到期时间：</view>
+        <view class="current-table">{{data_info.terminal_date}}</view>
+      </view>
+      <view class="info-content">
+        <view>费用：</view>
+        <view class="current-table">{{data_info.payment}}{{data_info.fee}}</view>
+      </view>
+
+      <!-- 添加备注 -->
+      <view class="form-content">
+        <form bindsubmit="submitNote">
+          <view class="info-content">
+            <view>备注：</view>
+            <view class="current-table">{{data_info.note? data_info.note:'无'}}</view>
+            <button class="note-button" size="mini" plain="true" bindtap="addNote">添加备注</button>
+          </view>
+          <view wx:if="{{add_note}}"> 
+            <view class="info-content">
+              <input type="text" placeholder="{{data_info.note? data_info.note:'输入内容'}}" name="note_content"/>
+            </view>
+          </view>
+          <view>
+            <button class="certain-button" size="mini" type="primary" plain="true" form-type="submit">确定</button>
+          </view>
+         </form>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!-- 删除座位 -->
+<view wx:if="{{show_data_delete}}">
+  <view class="mask"></view>
+  <view class="modalDlg">
+    <view class="info-id">
+      <view>当前座位号：</view>
+      <view class="current-table">{{data_info.symbol}}{{data_info.table_id}}</view>
+    </view>
+    <view class="info-id">
+      <view>确认删除？</view> 
+    </view>
+    <view class="yes-no-button">
+      <button class="bt" bindtap="clearTable" type="primary" plain="true">确定</button>
+      <button class="bt" bindtap="clearExit" type="warn" plain="true">取消</button>
+    </view>
+
+  </view>
+</view>
+    

@@ -1,0 +1,83 @@
+<!-- 三店一楼  1-17号 -->
+<view class="font-title" bindtap="testShow"> 三店一楼 >> 1-17号</view>
+
+<view class="seat" bindtouchmove="hideManage">
+  <view  wx:for="{{table_No}}"wx:for-item="table_number" wx:for-index="id" wx:key="table_num">
+    <!-- 如果有内容就显示座位信息 -->
+    <view class="{{table_number.table_id? 'seat-content':'seat-empty'}}">
+      <block wx:if="{{table_number.table_id}}">
+        <view class="table-content seat-content" id="table-{{id}}" bindlongpress="showManage" >
+          <view class="table-content-id" >{{symbol}}{{table_number.table_id}} 号座位</view>
+          <!-- 长按修改座位信息 -->
+          <view wx:if="{{id == table_id}}" class="talbe-manage">
+            <button id="change-{{id}}" size="mini" class="button" bindtap="replaceConfirm">换位置</button>
+            <button size="mini" class="button" bindtap="clearConfirm">清空</button>
+          </view>
+          <!-- 显示座位信息 -->
+          <view wx:else class="table-info">
+            <block wx:if="{{table_number.original_date}}">
+              <view class="arrive-info">续费: {{table_number.arrive_date}}</view>
+            </block>
+            <block wx:else>
+              <view class="arrive-info">到店: {{table_number.arrive_date}}</view>
+            </block>
+            <view class="duration-info">时长：{{table_number.duration_time}}</view>
+            <view class="terminal-info">到期: {{table_number.terminal_date}}</view>
+          </view>
+        </view>
+      </block> 
+      <!-- 如果没有内容就显示空座位 -->
+      <block wx:else>
+        <view class="table-empty" >
+          <view class="table-content-id">{{symbol}}{{table_number}} 号座位</view>
+          <view class="table-empty-info">空闲</view>
+          <button size="mini" class="button" id="table-{{id}}" bindtap="tableAdd">添加</button>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+
+<!-- 清空座位信息 -->
+<view wx:if="{{if_claer}}">
+  <view class="mask"></view>
+  <view class="modalDlg">
+    <view class="clear-table-id">
+      <view>当前座位号：</view>
+      <view class="current-table">{{symbol}}{{current_table}}</view>
+    </view>
+    <view class="clear-confirm">是否清空本座位信息</view>
+    <view class="yes-or-no">
+      <button class="bt" id="clear-{{table_id}}" size="mini" bindtap="clearTable" type="primary" plain="true">确定</button>
+      <button class="bt" size="mini" bindtap="clearExit" type="warn" plain="true">取消</button>
+  </view>
+  </view>
+</view>
+
+<!-- 更换座位 -->
+<view wx:if="{{if_replace}}">
+  <view class="mask"></view>
+  <view class="modalDlg2">
+    <view class="replace-table-id">
+      <view>当前座位号：</view>
+      <view class="current-table">{{symbol}}{{current_table}}</view>
+    </view>
+    <view class="replace-content">
+      <view class="replace-confirm">更换到：</view>
+      <input class="replace-input" type="idcard" placeholder="请输入座位号" bindfocus="changeSymbol" bindblur="getReplaceID"/>
+    </view>
+    <!-- 选择房间前缀（A,B,C） -->
+    <view class="room-symbol">
+      <radio-group class="symbol-items" bindchange="radioChange">
+        <view class="symbol-item"><radio value="" checked="{{if_symbol}}"/><view>检查</view></view>
+      </radio-group>                     
+    </view>
+    <view class="yes-or-no">
+      <button class="bt2" id="replace-{{table_id}}" size="mini" bindtap="replaceTable" type="primary" plain="true"
+      disabled="{{dont_replace}}">确定</button>
+      <button class="bt2" size="mini" bindtap="replaceExit" type="warn" plain="true">取消</button>
+  </view>
+  </view>
+</view>
+
+<view class="bottom"> _ </view>

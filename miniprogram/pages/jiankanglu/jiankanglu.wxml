@@ -1,0 +1,52 @@
+<view>
+  <view class="font-title">健康路三楼</view>
+
+  <!-- 志远Z Z1-Z14号 -->
+  <view bindtap="bindroom_z" class="room" id="room_z">
+    <view class="room-info"> 
+      <view class="room-name">志远 Z房间</view>
+      <view class="room-tables">Z1-Z14号</view>
+    </view>
+  </view>
+
+  <!-- 墨香M M1-M14号 -->
+  <view bindtap="bindroom_m" class="room" id="room_m">
+    <view class="room-info"> 
+      <view class="room-name">墨香 M房间</view>
+      <view class="room-tables">M1-M14号</view>
+    </view>
+  </view>
+
+  <!-- 学林X X1-X14号 -->
+  <view bindtap="bindroom_x" class="room" id="room_x">
+    <view class="room-info"> 
+      <view class="room-name">学林 X房间</view>
+      <view class="room-tables">X1-X14号</view>
+    </view>
+  </view>
+  
+  <!-- 清心Q Q1-Q14号 -->
+  <view bindtap="bindroom_q" class="room" id="room_q">
+    <view class="room-info"> 
+      <view class="room-name">清心 Q房间</view>
+      <view class="room-tables">Q1-Q14号</view>
+    </view>
+  </view>
+
+  <!-- 律己L L1-L33号 -->
+  <view bindtap="bindroom_l" class="room" id="room_l">
+    <view class="room-info"> 
+      <view class="room-name">律己 L房间</view>
+      <view class="room-tables">L1-L33号</view>
+    </view>
+  </view>
+
+  <!-- 弘文H H1-H14号 -->
+  <view bindtap="bindroom_h" class="room" id="room_h">
+    <view class="room-info"> 
+      <view class="room-name">弘文 H房间</view>
+      <view class="room-tables">H1-H14号</view>
+    </view>
+  </view>
+
+</view>

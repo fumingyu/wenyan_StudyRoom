@@ -1,0 +1,43 @@
+
+ 
+<view>
+  <view class="font-title">文研三店 >> 一楼</view>
+  <!-- 一楼房间 1-17号 -->
+  <view bindtap="bindroom1" class="room" id="room_3_1">
+    <view class="room-info"> 
+      <view class="room-name">一楼房间</view>
+      <view class="room-tables">1-17号</view>
+    </view>
+  </view>
+  <!-- 一楼房间 18-44号 -->
+  <view bindtap="bindroom2" class="room" id="room_3_2">
+    <view class="room-info"> 
+      <view class="room-name">一楼房间</view>
+      <view class="room-tables">18-44号</view>
+    </view> 
+  </view>
+  <view class="font-title">文研三店 >> 二楼</view>
+  <!-- 二楼房间 45-67 号 -->
+  <view bindtap="bindroom3" class="room" id="room_3_3">
+    <view class="room-info"> 
+      <view class="room-name">二楼房间</view>
+      <view class="room-tables" id="room3-table">45-67号</view>
+    </view> 
+  </view>
+  <!-- 二楼房间 68-84 号 -->
+  <view bindtap="bindroom4" class="room" id="room_3_4">
+    <view class="room-info"> 
+      <view class="room-name">二楼房间</view>
+      <view class="room-tables">68-84号</view>
+    </view>
+  </view>
+    <!-- 二楼房间 85-98 号 -->
+    <view bindtap="bindroom5" class="room" id="room_3_5">
+    <view class="room-info"> 
+      <view class="room-name">二楼房间</view>
+      <view class="room-tables">85-98号</view>
+    </view>
+  </view>
+</view>
+
+

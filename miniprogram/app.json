@@ -1,7 +1,32 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/fill_form/fill_form"
+    "pages/sandian/sandian",
+    "pages/jiankanglu/jiankanglu",
+    "pages/overview/overview",
+    "pages/view_empty/view_empty",
+    "pages/room1/room1",
+    "pages/room2/room2",
+    "pages/room3/room3",
+    "pages/room4/room4",
+    "pages/room5/room5",
+    "pages/room6/room6",
+    "pages/room7/room7",
+    "pages/room_z/room_z",
+    "pages/room_m/room_m",
+    "pages/room_x/room_x",
+    "pages/room_q/room_q",
+    "pages/room_l/room_l",
+    "pages/room_h/room_h",
+    "pages/fill_current/fill_current",
+    "pages/fill_current2/fill_current2",
+    "pages/renewal_form/renewal_form",
+    "pages/room_3_1/room_3_1",
+    "pages/room_3_2/room_3_2",
+    "pages/room_3_3/room_3_3",
+    "pages/room_3_4/room_3_4",
+    "pages/room_3_5/room_3_5",
+    "pages/fill_current3/fill_current3"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -9,6 +34,41 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "文研记录",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "学院西路",
+        "iconPath": "/icons/east-0.png",
+        "selectedIconPath": "/icons/east-1.png"
+      },
+      {
+        "pagePath": "pages/sandian/sandian",
+        "text": "学院三店",
+        "iconPath": "/icons/east-0.png",
+        "selectedIconPath": "/icons/east-1.png"
+      },
+      {
+        "pagePath": "pages/jiankanglu/jiankanglu",
+        "text": "健康路",
+        "iconPath": "/icons/west-0.png",
+        "selectedIconPath": "/icons/west-1.png"
+      },
+      {
+        "pagePath": "pages/overview/overview",
+        "text": "座位总览",
+        "iconPath": "/icons/list-0.png",
+        "selectedIconPath": "/icons/list-1.png"
+      },
+      {
+        "pagePath": "pages/view_empty/view_empty",
+        "text": "查空位",
+        "iconPath": "/icons/add-0.png",
+        "selectedIconPath": "/icons/add-1.png"
+      }
+    ],
+    "backgroundColor": "#e9f4f8"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

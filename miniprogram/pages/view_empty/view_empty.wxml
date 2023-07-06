@@ -1,0 +1,29 @@
+
+
+<view class="text-content">
+  <view class="store-location" id="local-1">学院西路店</view>
+  <view class="east-seat">
+    <text user-select="true">东区空位：【{{east_seat.length}}】 个   ▌   共 【94】个 </text>
+    <text class="east-table-id" user-select="true">{{east_seat.length==0? '无':east_seat}}</text>
+  </view>
+  <view class="east-seat">
+    <text user-select="true">西区空位：【{{west_seat.length}}】 个   ▌   共 【46】个 </text>
+    <text class="east-table-id" user-select="true">{{west_seat.length==0? '无':west_seat}}</text>
+  </view>
+</view>
+
+<view class="text-content">
+  <view class="store-location" id="local-2">健康路店</view>
+  <view class="east-seat">
+    <text user-select="true">房间空位：【{{jiankang_seat.length}}】 个   ▌   共 【103】个</text>
+    <text class="east-table-id" user-select="true">{{jiankang_seat.length==0? '无':jiankang_seat}}</text>
+  </view>
+</view>
+
+<view class="text-content">
+  <view class="store-location" id="local-3">文研三店</view>
+  <view class="east-seat">
+    <text user-select="true">房间空位：【{{sandian_seat.length}}】 个   ▌   共 【98】个</text>
+    <text class="east-table-id" user-select="true">{{sandian_seat.length==0? '无':sandian_seat}}</text>
+  </view>
+</view>

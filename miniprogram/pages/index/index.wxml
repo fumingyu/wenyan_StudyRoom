@@ -1,39 +1,66 @@
-<view class="modify-form">
-<form bindsubmit='getForm'>
-    <view class="label-list">
-        <view class="label">姓名</view>
-        <view class="input-box">
-        <input placeholder="请输入您的姓名"  placeholder-class="place" name="name" value="{{name}}"/>
-        </view>
+
+<!--东区、西区导航条-->
+<view class="navbar">
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="navbar" bindtap="navbarTap">{{item}}</text>
+</view>
+
+<view hidden="{{currentTab!==0}}">
+  <view class="font-title">东区一楼</view>
+  <!-- 一楼小房间 1-23号 -->
+  <view bindtap="bindroom2" class="room" id="room2">
+    <view class="room-info"> 
+      <view class="room-name">一楼小房间</view>
+      <view class="room-tables">1-23号</view>
     </view>
-    <view class="label-list">
-        <view class="label">性别</view>
-        <radio-group class="radio-group" bindchange="radioChange">
-            <label class="radio" wx:for="{{sex}}" wx:key="index">
-                <radio value="{{item.id}}" checked="{{sexId == item.id}}"/>{{item.name}}
-            </label>
-        </radio-group>
+  </view>
+  <!-- 一楼大厅 24-31，101-105号 -->
+  <view bindtap="bindroom1" class="room" id="room1">
+    <view class="room-info"> 
+      <view class="room-name">一楼大厅</view>
+      <view class="room-tables">24-31号,101-105号</view>
     </view>
-    <view class="label-list">
-        <view class="label">E-mail</view>
-        <view class="input-box">
-        <input placeholder="请输入您的E-mail" value='{{Email}}' placeholder-class="place" name='Email'/>
-        </view>
+  </view>
+  <view class="font-title">东区二楼</view>
+  <!-- 二楼大厅 32-56 号 -->
+  <view bindtap="bindroom3" class="room" id="room3">
+    <view class="room-info"> 
+      <view class="room-name">二楼大厅</view>
+      <view class="room-tables" id="room3-table">32-56号</view>
+    </view> 
+  </view>
+  <!-- 二楼小房间 57-89 号 -->
+  <view bindtap="bindroom4" class="room" id="room4">
+    <view class="room-info"> 
+      <view class="room-name">二楼小房间</view>
+      <view class="room-tables">57-89号</view>
     </view>
-    <view class="label-list">
-        <view class="label">所在公司/学校</view>
-        <view class="input-box">
-        <input placeholder="请输入您的公司/学校" value="{{school}}"  placeholder-class="place" name='school'/>
-        </view>
+  </view>
+</view>
+
+<view hidden="{{currentTab!==1}}">
+  <view class="font-title">西区一楼</view>
+  <!-- 西区A A1-A23号 -->
+  <view bindtap="bindroom5" class="room" id="room5">
+    <view class="room-info"> 
+      <view class="room-name">西区 A房间</view>
+      <view class="room-tables">A1-A23号</view>
     </view>
-    <view class="label-list">
-        <view class="label">身份</view>
-        <picker bindchange="bindPickerChange" range="{{identity}}" value="{{index}}">
-        <view  class="picker-show">
-        {{identity[index]}}
-        </view>
-        </picker>
+  </view>
+  
+  <!-- 西区B B1-B13号 -->
+  <view bindtap="bindroom6" class="room" id="room6">
+    <view class="room-info"> 
+      <view class="room-name">西区 B房间</view>
+      <view class="room-tables">B1-B13号</view>
     </view>
-    <button formType="submit" bindtap="saveData" class="submit">确定</button>
-</form>
+  </view>
+
+  <!-- 西区C C1-C10号 -->
+  <view bindtap="bindroom7" class="room" id="room7">
+    <view class="room-info"> 
+      <view class="room-name">西区 C房间</view>
+      <view class="room-tables">C1-C10号</view>
+    </view>
+  </view>
+
 </view>

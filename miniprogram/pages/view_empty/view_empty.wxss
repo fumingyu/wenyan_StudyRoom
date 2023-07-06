@@ -1,0 +1,79 @@
+
+.text-content .east-seat{
+  margin-left: 20rpx;
+  margin-top: 30rpx;
+}
+.store-location{
+  margin-top: 25rpx;
+  font-size: 50rpx;
+  text-align: center;
+}
+#local-1 {
+  color: rgb(245, 27, 245);
+}
+#local-2 {
+  margin-top: 20;
+  color: rgb(6, 233, 184);
+}
+#local-3 {
+  margin-top: 20;
+  color: rgb(191, 178, 238);
+}
+ 
+.get-empty-seat{
+  margin-top: 142rpx;
+}
+.east-table-id{
+  display: flex;
+  margin-top: 16rpx;
+  margin-left: 18rpx;
+  padding-right: 30rpx;
+  font-size: 36rpx;
+  word-break: break-all;   /* 自动换行 */
+}
+
+.pictures .pic-item{
+  margin-top: 15rpx;
+  margin-left: 70rpx;
+}
+
+.head{
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  margin-bottom: 30rpx;
+}
+.record-title{
+  font-size: 30rpx;
+  display: flex;
+}
+.title-item {
+  margin-left: 60rpx;
+}
+
+.record-content {
+  display: flex;
+  margin-top: 40rpx;
+} 
+
+.item-avatar, .item-nickname, .item-table{
+  width: 120rpx;
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  font-size: small; 
+}
+.item-avatar{
+  margin-top: -5rpx;
+  width: 96rpx;
+  height: 96rpx;
+}
+.item-nickname{
+  width: 140rpx;
+}
+.item-table{
+  display: flex;
+}
+.item-accept, .item-reject{
+  height: 16% !important;
+  width: 16% !important;
+  margin-top: 20rpx;
+}
